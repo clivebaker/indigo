@@ -1,0 +1,46 @@
+<% content_for :js do %>
+
+	<script type="text/javascript">
+		
+		$(function(){
+
+
+			setInterval(function(){ 
+				
+
+				$( ".check-me" ).each(function( index ) {
+				  $(this)[0].click();
+				});
+
+				
+				// alert("Hello"); 
+			}, 3000);
+
+
+		});
+
+
+	</script>
+
+<% end %>
+
+
+<% devices = JSON.parse(@response.body) %>
+
+<div class="status"></div>
+
+<ul>
+<% devices.select{|a| a["name"].include?("BLM")}.each do |device| %>
+
+<%#= device.inspect %>
+
+		<li>
+			<%= device['name'] %> <%= link_to device['name'], home_device_path( device_url: device['restURL'],device_name: device['name'] )%>
+			<%= link_to 'Details', home_device_path( device_url: device['restURL'],device_name: device['name'] ), remote: true, class: "check-me"%> <span id="<%= device['name'].gsub(" ","-")%>"></span>
+		</li>
+
+<% end %>
+
+</ul>
+
+

@@ -1,0 +1,20 @@
+
+
+
+<h1><%=@name%></h1>
+<h3>Status: <%=@device["isOn"]%></h3>
+<%= link_to "Home", root_path %>
+<br>
+
+
+<ul>
+	<% @device.keys.each do |k| %>
+	<li><%=k%>: <%=@device[k]%></li>
+	<% end %>
+</ul>
+
+<div></div>
+
+<br>
+
+<%= link_to "Home", root_path %>

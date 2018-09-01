@@ -1,0 +1,6 @@
+// alert("<%=@name%>\n\nStatus: <%=@device["isOn"]%>")
+
+console.log("Hello THere");
+console.log("#<%= @name.gsub(" ","-")%>");
+
+$("#<%= @name.gsub(" ","-")%>").html("STATUS: <%= @device["isOn"] ? 'ON' : 'OFF' %>")
